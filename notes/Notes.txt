@@ -1,0 +1,8 @@
+string functions
+len   ---> length of the string
+str.tittle()      james kalenga -----> James kalenga
+upper()
+lower()
+strip() ----> removes white space from start and end 
+find("ja")  ---> gives the index of ja
+replace("j", p)
