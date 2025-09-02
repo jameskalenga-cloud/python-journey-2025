@@ -36,26 +36,103 @@ It’s guaranteed that every comma and every dot in  is preceeded and followed b
 
 '''
 
+import random
 num = '100,000,000.000'
 
 
-def compute(num):
-    temp = ''
-    store = []
-    for item in num:
-        if item in [',', '.']:
-            store.append(temp)
-            temp = ''
-        else:
-            temp += item
-    store.append(temp)
-    return store
+# def compute(num):
+#     temp = ''
+#     store = []
+#     for item in num:
+#         if item in [',', '.']:
+#             store.append(temp)
+#             temp = ''
+#         else:
+#             temp += item
+#     store.append(temp)
+#     return store
 
 
-def dispaly_results(res):
-    for item in res:
-        print(item)
+# def dispaly_results(res):
+#     for item in res:
+#         print(item)
 
 
-res = compute(num)
-dispaly_results(res)
+# res = compute(num)
+# dispaly_results(res)
+
+
+# Problem 3
+# https://www.hackerrank.com/challenges/input/problem?isFullScreen=true
+# def sign_process(data):
+#     signs = []
+#     for item in data:
+#         if item in ['+', '-']:
+#             signs.append(item)
+#     return signs
+
+
+# data = ['x**3', '+', 'x**2', '+', 'x', '+', '1']
+# first_item = data[0][-1]
+# last_item = data[-1]
+# store = 0
+# while first_item == 0:
+
+#     first_item -= 1
+
+
+# def get_choices(options):
+#     player_choice = input("Enter a choice (rock, paper, scissors): ")
+#     options = ['rock', 'paper', 'scissors']
+#     computer_choice = random.choice(options)
+#     choices = {
+#         "player": player_choice,
+#         "computer": computer_choice
+#     }
+
+#     return choices
+
+
+# food = ['pizza', 'burger', 'salad']
+# dinner = random.choice(food)
+
+# choice = get_choices()
+
+# print(choice)
+
+'''
+Problem 4
+https://www.hackerrank.com/challenges/compress-the-string/problem
+1222311
+Sample Output
+(1, 1) (3, 2) (1, 3) (2, 1)
+'''
+
+store_data = []
+input_data = '1222311'
+
+
+def count_values(current_index, input_data):
+    count = 1
+
+    for index in range(current_index['index'], len(input_data)):
+        try:
+            if current_index['value'] == input_data[index + 1]:
+                count += 1
+            else:
+                break
+        except IndexError:
+            # Prevent out-of-range access
+            break
+    store_data.append((count, current_index['value']))
+
+
+for index in range(len(input_data)):
+    current_index = {
+        'index': index,
+        'value': input_data[index]
+    }
+
+    count_values(current_index, input_data)
+
+print(store_data)

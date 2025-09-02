@@ -6,3 +6,4 @@ lower()
 strip() ----> removes white space from start and end 
 find("ja")  ---> gives the index of ja
 replace("j", p)
+
