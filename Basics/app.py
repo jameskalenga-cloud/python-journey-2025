@@ -108,31 +108,69 @@ Sample Output
 (1, 1) (3, 2) (1, 3) (2, 1)
 '''
 
-store_data = []
-input_data = '1222311'
+# store_data = []
+# input_data = '1222311'
 
 
-def count_values(current_index, input_data):
-    count = 1
+# def count_values(current_index, input_data):
+#     count = 1
 
-    for index in range(current_index['index'], len(input_data)):
-        try:
-            if current_index['value'] == input_data[index + 1]:
-                count += 1
-            else:
-                break
-        except IndexError:
-            # Prevent out-of-range access
-            break
-    store_data.append((count, current_index['value']))
+#     for index in range(current_index['index'], len(input_data)):
+#         try:
+#             if current_index['value'] == input_data[index + 1]:
+#                 count += 1
+#             else:
+#                 break
+#         except IndexError:
+#             # Prevent out-of-range access
+#             break
+#     store_data.append((count, current_index['value']))
 
 
-for index in range(len(input_data)):
-    current_index = {
-        'index': index,
-        'value': input_data[index]
-    }
+# for index in range(len(input_data)):
+#     current_index = {
+#         'index': index,
+#         'value': input_data[index]
+#     }
 
-    count_values(current_index, input_data)
+#     count_values(current_index, input_data)
 
-print(store_data)
+# print(store_data)
+
+
+'''
+There is an array of  integers. There are also  disjoint sets,  and , each containing  integers. 
+You like all the integers in set  and dislike all the integers in set . Your initial happiness is . 
+For each  integer in the array, if , you add  to your happiness. 
+If , you add  to your happiness. Otherwise, your happiness does not change. Output your final happiness at the end.
+Note: Since  and  are sets, they have no repeated elements. However, the array might contain duplicate elements.
+
+Input
+3 2
+1 5 3
+3 1
+5 7
+'''
+
+n_m_values = input()
+data_array = input()
+set_a = input()
+set_b = input()
+
+
+n, m = map(int, n_m_values.split())
+data_array = list(map(int, data_array.split()))
+set_a = set(map(int, set_a.split()))
+set_b = set(map(int, set_b.split()))
+
+
+control_a = 0
+control_b = 0
+
+for item in data_array:
+    if item in set_a:
+        control_a += 1
+    if item in set_b:
+        control_b += 1
+
+print(control_a - control_b)
