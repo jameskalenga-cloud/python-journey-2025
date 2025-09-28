@@ -152,25 +152,86 @@ Input
 5 7
 '''
 
-n_m_values = input()
-data_array = input()
-set_a = input()
-set_b = input()
+# n_m_values = input()
+# data_array = input()
+# set_a = input()
+# set_b = input()
 
 
-n, m = map(int, n_m_values.split())
-data_array = list(map(int, data_array.split()))
-set_a = set(map(int, set_a.split()))
-set_b = set(map(int, set_b.split()))
+# n, m = map(int, n_m_values.split())
+# data_array = list(map(int, data_array.split()))
+# set_a = set(map(int, set_a.split()))
+# set_b = set(map(int, set_b.split()))
 
 
-control_a = 0
-control_b = 0
+# control_a = 0
+# control_b = 0
 
-for item in data_array:
-    if item in set_a:
-        control_a += 1
-    if item in set_b:
-        control_b += 1
+# for item in data_array:
+#     if item in set_a:
+#         control_a += 1
+#     if item in set_b:
+#         control_b += 1
 
-print(control_a - control_b)
+# print(control_a - control_b)
+
+
+def start_with_correct_number(data):
+    correct_values = [4, 5, 6]
+    if int(data[0]) in correct_values:
+        return True
+    return False
+
+
+def contains_16_char(data):
+    if len(data) == 16:
+        return True
+    elif len(data) > 16:
+        if data[4] == '-' and data[9] == '-' and data[14] == '-':
+            temp = data.replace('-', '')
+            if len(temp) == 16:
+                return True
+    return False
+
+
+def invalid_char(data):
+    for item in data:
+        if not item.isnumeric() and item != '-':
+            return False
+    if data.count('-') > 3:
+        return False
+    return True
+
+
+def repeat_more_times(data):
+    data_cleaned = data.replace("-", "")
+    for i in range(len(data_cleaned)):
+        temp = data_cleaned[i]
+        counter = 0
+        for j in range(i, len(data_cleaned)):
+            if (temp == data_cleaned[j]):
+                counter += 1
+                if counter >= 4:
+                    return False
+
+            else:
+                break
+    return True
+
+loop_itr = int(input())
+
+for index in range(loop_itr):
+    data = input()
+    value1 = start_with_correct_number(data)
+    value2 = contains_16_char(data)
+    value3 = invalid_char(data)
+    value4 = repeat_more_times(data)
+    set_of_values = set([value1, value2, value3, value4])
+    my_list = list(set_of_values)
+    if len(my_list) > 1:
+        print('Invalid')
+    elif len(my_list) == 1:
+        if my_list[0] == True:
+            print('Valid')
+        else:
+            print('Invalid')
